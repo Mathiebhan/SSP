@@ -36,8 +36,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QSerialPort *arduino;
-    static const quint16 arduino_uno_vendor_id = 9025;
-    static const quint16 arduino_uno_product_id = 67;
+    static const quint16 arduino_uno_vendor_id = 9325;
+    static const quint16 arduino_uno_product_id = 47;
     QByteArray serialData;
     QString serialBuffer;
     QString TiltIO;
