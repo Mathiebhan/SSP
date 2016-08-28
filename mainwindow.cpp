@@ -93,16 +93,18 @@ void MainWindow::readSerial()
         qDebug() << buffer_split << "\n";
         parsed_data = buffer_split[1];
 
+        TiltIO = buffer_split[0].toDouble();
         MainWindow::updateTilt(TiltIO);
 
-        Temperaturevalue = (9/5.0) * (parsed_data.toDouble()) + 32;
+        Temperaturevalue = buffer_split[1].toDouble(); //celsius
+        //Temperaturevalue = (9/5.0) * (parsed_data.toDouble()) + 32; // convert to fahrenheit
         qDebug() << "Temperature: " << Temperaturevalue << "\n";
-        parsed_data = QString::number(Temperaturevalue, 'g', 4); // format precision of temperature_value to 4 digits or fewer
+        parsed_data = QString::number(Temperaturevalue, 'g', 4); // format precision of Temperaturevalue to 4 digits or fewer
         MainWindow::updateTemperature(parsed_data);
 
-        Humidityvalue = (9/5.0) * (parsed_data.toDouble()) + 32;
+        Humidityvalue = buffer_split[2].toDouble();
         qDebug() << "Humidity: " << Humidityvalue << "\n";
-        parsed_data = QString::number(Humidityvalue, 'g', 4);
+        parsed_data = QString::number(Temperaturevalue, 'g', 4);
         MainWindow::updateHumidity(parsed_data);
 
 
