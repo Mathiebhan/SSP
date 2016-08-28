@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <string>
+#include <QtWidgets>
 #include <QtGui>
 #include <QtCore>
 #include <QFile>
@@ -23,6 +24,21 @@ MainWindow::MainWindow(QWidget *parent) :
     //Qlabel->Dolle
     arduino = new QSerialPort(this);
     serialBuffer = ""; parsed_data = ""; Temperaturevalue = 0,0; Humidityvalue = 0,0; TiltIO = "Unknown";
+
+        /*
+        //Testing code, prints the description, vendor id, and product id of all ports.
+          Used it to determine the values for the arduino uno.
+        {
+        qDebug() << "Number of ports: " << QSerialPortInfo::availablePorts().length() << "\n";
+        foreach(const QSerialPortInfo &serialPortInfo, QSerialPortInfo::availablePorts()){
+            qDebug() << "Description: " << serialPortInfo.description() << "\n";
+            qDebug() << "Has vendor id?: " << serialPortInfo.hasVendorIdentifier() << "\n";
+            qDebug() << "Vendor ID: " << serialPortInfo.vendorIdentifier() << "\n";
+            qDebug() << "Has product id?: " << serialPortInfo.hasProductIdentifier() << "\n";
+            qDebug() << "Product ID: " << serialPortInfo.productIdentifier() << "\n";
+        }
+        //Identify the port the arduino uno is on.
+        */
 
     bool arduino_is_available = false;
     QString arduino_uno_port_name;
